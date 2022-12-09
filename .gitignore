@@ -294,6 +294,7 @@ mysqlconnection.py
 old_queries_*
 shamanvenv/
 static/cards/
+supernovashaman_schema.sql
 SupernovaShaman.db
 SupernovaShaman.mwb
 SupernovaShaman.mwb.bak
