@@ -3,6 +3,8 @@ from flask_wtf import FlaskForm
 from flask import flash
 from mysqlconnection import connectToMySQL
 from wtforms import BooleanField
+from wtforms import DateField
+from wtforms import IntegerField
 from wtforms import PasswordField
 from wtforms import StringField
 from wtforms import SubmitField
@@ -70,3 +72,26 @@ class EditProfileForm(FlaskForm):
             user = User.get_user_by_username(username_dict)
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+
+class AddNewCardForm(FlaskForm):
+    name = StringField('Name', validators=[
+        DataRequired()])
+    description = TextAreaField('Description', validators=[
+        DataRequired(),
+        Length(min=0, max=1023)])
+    type = StringField('Type', validators=[
+        DataRequired(),
+        Length(min=0, max=15)])
+    released_on = DateField('Release Date', validators=[
+        DataRequired()])
+    status = StringField('Status', validators=[
+        DataRequired(),
+        Length(min=0, max=32)])
+        # 'ALTER TABLE' needed
+    quantity = IntegerField('Quantity', validators=[
+        DataRequired()])
+    filename = StringField('Filename', validators=[
+        DataRequired(),
+        Length(min=0, max=127)])
+    submit = SubmitField('Add card')

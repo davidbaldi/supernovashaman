@@ -1,6 +1,7 @@
 from app import app
 from app.forms import EditProfileForm
 from app.forms import LoginForm
+from app.forms import AddNewCardForm
 from app.forms import RegistrationForm
 from app.models import User
 from app.models import Card
@@ -100,8 +101,11 @@ def register():
 @app.route('/user/<username>')
 @login_required
 def user(username):
-    # How to rewrite without using 'username'?
-    return render_template('user.html', user=current_user)
+    user_query_dict = {'username': username}
+    user = User.get_user_by_username(user_query_dict)
+    if user is not None:
+        return render_template('user.html', user=user)
+    return render_template('404.html')
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -109,13 +113,45 @@ def user(username):
 def edit_profile():
     form = EditProfileForm(current_user.username, current_user.about_me)
     if form.validate_on_submit():
-        current_user.update_
-        (current_user.__dict__)
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.update_profile(current_user.__dict__)
         flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+
+# Temporary
+@app.route('/cards')
+@login_required
+def display_all_cards():
+    return render_template('_card_raw.html', card=None)
+
+
+@app.route('/admin/cards/add_card', methods=['GET', 'POST'])
+@login_required
+def add_card():
+    form = AddNewCardForm()
+    if form.validate_on_submit():
+        new_card_dict = {
+            'name': form.name.data,
+            'description': form.description.data,
+            'type': form.type.data,
+            'released_on': form.released_on.data,
+            'status': form.status.data,
+            'quantity': form.quantity.data,
+            'filename': form.filename.data
+        }
+        Card.add_card(new_card_dict=new_card_dict)
+        return redirect('/admin/add_card')
+    return render_template('admin_add_card.html', form=form)
+
+
+@app.route('/admin/cards/view_all_cards')
+@login_required
+def view_all_cards():
+    cards = Card.get_all_cards()
+    return render_template('admin_view_all_cards.html', cards=cards)

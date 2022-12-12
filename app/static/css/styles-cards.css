@@ -19,7 +19,7 @@ address { font-style:normal }
 }
 
 body {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1><i>All cards</i></h1>
+    <h2>Click on a card name to edit that card.</h2>
+    <form action="" method="post">
+        <p>
+            <table class="all_cards_table">
+                <thead class="all_cards_thead">
+                    <tr class="all_cards_tr">
+                        <th class="all_cards_th">ID</th>
+                        <th class="all_cards_th">Name</th>
+                        <th class="all_cards_th">Description</th>
+                        <th class="all_cards_th">Type</th>
+                        <th class="all_cards_th">Release Date</th>
+                        <th class="all_cards_th">Status</th>
+                        <th class="all_cards_th">Quantity</th>
+                        <th class="all_cards_th">filename</th>
+                    </tr>
+                </thead>
+                {% for card in cards %}
+                    <tr class="all_cards_tr">
+                        <td class="all_cards_td">{{ card.id }}</td>
+                        <td class="all_cards_td">{{ card.name }}</td>
+                        <td class="all_cards_td">{{ card.description }}</td>
+                        <td class="all_cards_td">{{ card.type }}</td>
+                        <td class="all_cards_td">{{ card.released_on }}</td>
+                        <td class="all_cards_td">{{ card.status }}</td>
+                        <td class="all_cards_td">{{ card.quantity }}</td>
+                        <td class="all_cards_td">{{ card.filename }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </p>
+{% endblock %}

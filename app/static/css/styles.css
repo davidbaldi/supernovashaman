@@ -1,5 +1,3 @@
-/* Good first draft */
-
 /* Tantek Celik's reset */
 :link,:visited { text-decoration:none }
 ul, ol { list-style:none }
@@ -86,4 +84,15 @@ address { font-style:normal }
 .login-button {
     width: 100%;
     border-radius: 5px;
+}
+
+/* Main components (base.html template, etc.) */
+
+.all_cards_table,
+.all_cards_thead,
+.all_cards_th,
+.all_cards_tr,
+.all_cards_td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }

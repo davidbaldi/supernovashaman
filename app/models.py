@@ -6,7 +6,8 @@ from mysqlconnection import connectToMySQL
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
-db = __import__('config').Config.db
+# db = __import__('config').Config.db # What is going on here?
+db = ''
 
 
 @login.user_loader
@@ -122,7 +123,7 @@ class User(UserMixin):
 class Card:
 
     def __init__(self, db_card):
-        self.id = db_card['card_id']
+        self.id = db_card['id']
         self.name = db_card['name']
         self.description = db_card['description']
         self.type = db_card['type']
@@ -155,6 +156,30 @@ class Card:
                     );
                 """
         return connectToMySQL(db).query_db(query, new_card_dict)
+
+
+    def get_all_cards():
+        query = """
+                SELECT * FROM cards;
+                """
+        results = connectToMySQL(db).query_db(query)
+        if results:
+            card_list = []
+            for result in results:
+                card = Card(result)
+                card_list.append(card)
+            return card_list # Return cards as objects
+
+
+    def get_one_card(self, card_name_dict):
+        query = """
+                SELECT * FROM cards
+                WHERE card_name = %(card_name)s;
+                """
+        result = connectToMySQL(db).query_db(query, card_name_dict)
+        if result:
+            card = Card(result[0])
+            return card
 
 
     def like_card():
