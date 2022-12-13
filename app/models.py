@@ -177,7 +177,7 @@ class Card:
         result = connectToMySQL(db).query_db(query, card_name_dict)
         if result:
             return Card(result[0])
-    
+
 
     @classmethod
     def get_card_name_for_validation(cls, card_edits_dict):
@@ -208,7 +208,7 @@ class Card:
                     status = %(status)s,
                     quantity = %(quantity)s,
                     filename = %(filename)s
-                WHERE id = %(id)s;
+                WHERE card_name = %(original_card_name)s;
                 """
         return connectToMySQL(db).query_db(query, card_edits_dict)
 

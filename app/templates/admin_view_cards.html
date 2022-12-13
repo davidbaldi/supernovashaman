@@ -21,7 +21,7 @@
                 {% for card in cards %}
                     <tr class="all_cards_tr">
                         <td class="all_cards_td">{{ card.id }}</td>
-                        <td class="all_cards_td">{{ card.card_name }}</td>
+                        <td class="all_cards_td"><a href="/admin/cards/{{ card.card_name }}/edit">{{ card.card_name }}</a></td>
                         <td class="all_cards_td">{{ card.description }}</td>
                         <td class="all_cards_td">{{ card.type }}</td>
                         <td class="all_cards_td">{{ card.released_on }}</td>

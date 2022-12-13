@@ -170,13 +170,22 @@ def admin_view_one_card(card_name):
 @login_required
 def admin_edit_one_card(card_name):
     card_name_dict = {'card_name': card_name}
-    card = Card.get_one_card(card_name_dict=card_name_dict)
+    card = Card.get_one_card(card_name_dict)
     form = EditCardForm(card.__dict__)
     if form.validate_on_submit():
-        if form.validate_card_edits():
-            card.update_card(card.__dict__)
+        card_update_dict = {
+            'original_card_name': form.original_card_name,
+            'card_name': form.card_name.data,
+            'description': form.description.data,
+            'type': form.type.data,
+            'released_on': form.released_on.data,
+            'status': form.status.data,
+            'quantity': form.quantity.data,
+            'filename': form.filename.data
+        }
+        card.update_card(card_update_dict)
         flash('Your changes have been saved.')
-        return redirect(request.url)
+        return redirect(url_for('admin_view_all_cards'))
     elif request.method == 'GET':
         form.card_name.data = card.card_name
         form.description.data = card.description
@@ -185,4 +194,9 @@ def admin_edit_one_card(card_name):
         form.status.data = card.status
         form.quantity.data = card.quantity
         form.filename.data = card.filename
-    return render_template('admin_edit_card_form.html', title='Edit a Card', form=form)
+    return render_template(
+            'admin_edit_card_form.html',
+            title='Edit a Card',
+            form=form,
+            card=card
+            )

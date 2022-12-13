@@ -63,18 +63,10 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-    def __init__(self, original_username, new_about_me, *args, **kwargs):
-        super(EditProfileForm, self).__init__(*args, **kwargs)
+    def __init__(self, original_username, new_about_me):
+        super(EditProfileForm, self).__init__()
         self.original_username = original_username
         self.new_about_me = new_about_me
-
-
-    def validate_username(self, username):
-        username_dict = {'username': username}
-        if username.data != self.original_username:
-            user = User.get_user_by_username(username_dict)
-            if user is not None:
-                raise ValidationError('Please use a different username.')
 
 
 class AddNewCardForm(FlaskForm):
@@ -128,16 +120,16 @@ class EditCardForm(FlaskForm):
         self.original_filename = card_stats['filename']
 
 
-    def validate_card_edits(self, new_card_name, new_filename):
-        card_edits_dict = {
-            'new_card_name': new_card_name,
-            'new_filename': new_filename
-            }
-        if new_card_name.data != self.original_card_name:
-            card = Card.get_card_name_for_validation(card_edits_dict=card_edits_dict)
-            if card is not None:
-                raise ValidationError('Please use a different card name.')
-        if new_filename.data != self.original_filename:
-            card = Card.get_card_filename_for_validation(card_edits_dict=card_edits_dict)
-            if card is not None:
-                raise ValidationError('Please use a different filename.')
+    # def are_edits_valid(self, new_card_name, new_filename):
+    #     card_edits_dict = {
+    #         'new_card_name': new_card_name,
+    #         'new_filename': new_filename
+    #         }
+    #     if new_card_name.data != self.original_card_name:
+    #         card = Card.get_card_name_for_validation(card_edits_dict=card_edits_dict)
+    #         if card is not None:
+    #             raise ValidationError('Please use a different card name.')
+    #     if new_filename.data != self.original_filename:
+    #         card = Card.get_card_filename_for_validation(card_edits_dict=card_edits_dict)
+    #         if card is not None:
+    #             raise ValidationError('Please use a different filename.')
