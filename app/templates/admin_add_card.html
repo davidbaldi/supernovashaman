@@ -2,11 +2,12 @@
 
 {% block content %}
     <h1>Add a Card</h1>
+    Or, go back to <b><a href="/admin/cards/all">view all cards</a></b>.
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
-            {{ form.name.label }}<br>
-            {{ form.name(size=64) }}
+            {{ form.card_name.label }}<br>
+            {{ form.card_name(size=64) }}
         </p>
         <p>
             {{ form.description.label }}<br>

@@ -70,7 +70,7 @@ class EditProfileForm(FlaskForm):
 
 
 class AddNewCardForm(FlaskForm):
-    name = StringField('Name', validators=[
+    card_name = StringField('Name', validators=[
         DataRequired()])
     description = TextAreaField('Description', validators=[
         DataRequired(),

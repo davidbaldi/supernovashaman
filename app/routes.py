@@ -132,13 +132,19 @@ def display_all_cards():
     return render_template('_card_raw.html', card=None)
 
 
+@app.route('/admin')
+@login_required
+def admin_dashboard():
+    return render_template('admin_dashboard.html')
+
+
 @app.route('/admin/cards/add_card', methods=['GET', 'POST'])
 @login_required
 def admin_add_card():
     form = AddNewCardForm()
     if form.validate_on_submit():
         new_card_dict = {
-            'name': form.name.data,
+            'card_name': form.card_name.data,
             'description': form.description.data,
             'type': form.type.data,
             'released_on': form.released_on.data,
