@@ -7,12 +7,14 @@ from wtforms import BooleanField
 from wtforms import DateField
 from wtforms import IntegerField
 from wtforms import PasswordField
+from wtforms import SelectField
 from wtforms import StringField
 from wtforms import SubmitField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 from wtforms.validators import Email
 from wtforms.validators import EqualTo
+from wtforms.validators import InputRequired
 from wtforms.validators import Length
 from wtforms.validators import NumberRange
 from wtforms.validators import ValidationError
@@ -22,8 +24,8 @@ db = __import__('config').Config.db
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()]) # Check against empty fields
-    password = PasswordField('Password', validators=[DataRequired()]) # Check against empty fields
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Sign in')
 
@@ -76,17 +78,16 @@ class AddNewCardForm(FlaskForm):
     description = TextAreaField('Description', validators=[
         DataRequired(),
         Length(min=0, max=1023)])
-    type = StringField('Type', validators=[
-        DataRequired(),
-        Length(min=0, max=15)])
+    type = SelectField('Type', validators=[
+        DataRequired()],
+        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
     released_on = DateField('Release Date', validators=[
         DataRequired()])
-    status = StringField('Status', validators=[
-        DataRequired(),
-        Length(min=0, max=32)])
-        # 'ALTER TABLE' needed
+    status = SelectField('Status', validators=[
+        DataRequired()],
+        choices=['in stock', 'Limited edition!', 'Private collection'])
     quantity = IntegerField('Quantity', validators=[
-        DataRequired(),
+        InputRequired(),
         NumberRange(min=0)])
     filename = StringField('Filename', validators=[
         DataRequired(),
@@ -136,9 +137,15 @@ class EditCardForm(FlaskForm):
         self.original_filename = card_stats['filename']
 
 
-    def validate_card_name(card_edits_dict):
-        pass
+    def validate_card_name(self, card_edits_dict):
+        if Card.does_card_name_exist(card_edits_dict):
+            flash('Card name already exists.')
+            return False
+        return True
 
     
-    def validate_filename(card_edits_dict):
-        pass
+    def validate_filename(self, card_edits_dict):
+        if Card.does_filename_exist(card_edits_dict):
+            flash('Filename already exists.')
+            return False
+        return True

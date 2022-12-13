@@ -159,10 +159,12 @@ def admin_add_card():
         Card.add_card(new_card_dict=new_card_dict)
         flash('Card added successfully.')
         return redirect('/admin/cards/add_card')
-    return render_template('admin_add_card.html', form=form)
+    elif request.method == 'GET':
+        return render_template('admin_add_card.html', form=form)
 
 
-@app.route('/admin/cards/<card_name>/delete_card', methods=['GET'])
+# 'GET' or 'POST' or both?
+@app.route('/admin/cards/<card_name>/delete_card', methods=['GET', 'POST'])
 @login_required
 def admin_delete_card(card_name):
     card_name_dict = {'card_name': card_name}
@@ -178,12 +180,13 @@ def admin_view_all_cards():
     return render_template('admin_view_cards.html', cards=cards)
 
 
-@app.route('/admin/cards/<card_name>')
-@login_required
-def admin_view_one_card(card_name):
-    card_name_dict = {'card_name': card_name}
-    card = Card.get_one_card(card_name_dict=card_name_dict)
-    return render_template('admin_view_card.html', card=card)
+# # Maybe delete...
+# @app.route('/admin/cards/<card_name>')
+# @login_required
+# def admin_view_one_card(card_name):
+#     card_name_dict = {'card_name': card_name}
+#     card = Card.get_one_card(card_name_dict=card_name_dict)
+#     return render_template('admin_view_card.html', card=card)
 
 
 @app.route('/admin/cards/<card_name>/edit', methods=['GET', 'POST'])
