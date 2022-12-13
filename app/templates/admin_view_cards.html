@@ -21,6 +21,7 @@
                         <th class="all_cards_th">Status</th>
                         <th class="all_cards_th">Quantity</th>
                         <th class="all_cards_th">filename</th>
+                        <th class="all_cards_th red_delete_link">Delete</th>
                     </tr>
                 </thead>
                 {% for card in cards %}
@@ -33,6 +34,7 @@
                         <td class="all_cards_td">{{ card.status }}</td>
                         <td class="all_cards_td">{{ card.quantity }}</td>
                         <td class="all_cards_td">{{ card.filename }}</td>
+                        <td class="all_cards_td"><a href="/admin/cards/{{ card.card_name }}/delete_card" class="red_delete_link">Delete</a></td>
                     </tr>
                 {% endfor %}
             </table>

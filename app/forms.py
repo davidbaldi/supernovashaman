@@ -14,6 +14,7 @@ from wtforms.validators import DataRequired
 from wtforms.validators import Email
 from wtforms.validators import EqualTo
 from wtforms.validators import Length
+from wtforms.validators import NumberRange
 from wtforms.validators import ValidationError
 
 
@@ -85,11 +86,26 @@ class AddNewCardForm(FlaskForm):
         Length(min=0, max=32)])
         # 'ALTER TABLE' needed
     quantity = IntegerField('Quantity', validators=[
-        DataRequired()])
+        DataRequired(),
+        NumberRange(min=0)])
     filename = StringField('Filename', validators=[
         DataRequired(),
         Length(min=0, max=127)])
     submit = SubmitField('Add card')
+
+
+    def validate_card_name(self, card_edits_dict):
+        if Card.does_card_name_exist(card_edits_dict):
+            flash('Card name already exists.')
+            return False
+        return True
+
+
+    def validate_filename(self, card_edits_dict):
+        if Card.does_filename_exist(card_edits_dict):
+            flash('Filename already exists.')
+            return False
+        return True
 
 
 class EditCardForm(FlaskForm):
@@ -120,16 +136,9 @@ class EditCardForm(FlaskForm):
         self.original_filename = card_stats['filename']
 
 
-    # def are_edits_valid(self, new_card_name, new_filename):
-    #     card_edits_dict = {
-    #         'new_card_name': new_card_name,
-    #         'new_filename': new_filename
-    #         }
-    #     if new_card_name.data != self.original_card_name:
-    #         card = Card.get_card_name_for_validation(card_edits_dict=card_edits_dict)
-    #         if card is not None:
-    #             raise ValidationError('Please use a different card name.')
-    #     if new_filename.data != self.original_filename:
-    #         card = Card.get_card_filename_for_validation(card_edits_dict=card_edits_dict)
-    #         if card is not None:
-    #             raise ValidationError('Please use a different filename.')
+    def validate_card_name(card_edits_dict):
+        pass
+
+    
+    def validate_filename(card_edits_dict):
+        pass

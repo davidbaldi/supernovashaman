@@ -152,9 +152,23 @@ def admin_add_card():
             'quantity': form.quantity.data,
             'filename': form.filename.data
         }
+        if not form.validate_card_name(new_card_dict):
+            return redirect(request.url)
+        if not form.validate_filename(new_card_dict):
+            return redirect(request.url)
         Card.add_card(new_card_dict=new_card_dict)
+        flash('Card added successfully.')
         return redirect('/admin/cards/add_card')
     return render_template('admin_add_card.html', form=form)
+
+
+@app.route('/admin/cards/<card_name>/delete_card', methods=['GET'])
+@login_required
+def admin_delete_card(card_name):
+    card_name_dict = {'card_name': card_name}
+    Card.delete_card(card_name_dict=card_name_dict)
+    flash('Card deleted!')
+    return redirect(request.url)
 
 
 @app.route('/admin/cards/all')

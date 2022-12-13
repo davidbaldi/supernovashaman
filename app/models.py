@@ -180,7 +180,7 @@ class Card:
 
 
     @classmethod
-    def get_card_name_for_validation(cls, card_edits_dict):
+    def does_card_name_exist(cls, card_edits_dict):
         query = """
                 SELECT * FROM cards
                 WHERE card_name = %(card_name)s;
@@ -189,7 +189,7 @@ class Card:
 
 
     @classmethod
-    def get_card_filename_for_validation(cls, card_edits_dict):
+    def does_filename_exist(cls, card_edits_dict):
         query = """
                 SELECT * FROM cards
                 WHERE filename = %(filename)s;
@@ -211,6 +211,15 @@ class Card:
                 WHERE card_name = %(original_card_name)s;
                 """
         return connectToMySQL(db).query_db(query, card_edits_dict)
+
+
+    @classmethod
+    def delete_card(cls, card_name_dict):
+        query = """
+                DELETE FROM cards
+                WHERE card_name = %(card_name)s;
+                """
+        return connectToMySQL(db).query_db(query, card_name_dict)
 
 
     def like_card():
