@@ -124,7 +124,7 @@ class Card:
 
     def __init__(self, db_card):
         self.id = db_card['id']
-        self.name = db_card['name']
+        self.card_name = db_card['card_name']
         self.description = db_card['description']
         self.type = db_card['type']
         self.released_on = db_card['released_on']
@@ -137,7 +137,7 @@ class Card:
     def add_card(cls, new_card_dict):
         query = """
                 INSERT INTO cards (
-                    name,
+                    card_name,
                     description,
                     type,
                     released_on,
@@ -146,7 +146,7 @@ class Card:
                     filename
                     )
                 VALUES (
-                    %(name)s,
+                    %(card_name)s,
                     %(description)s,
                     %(type)s,
                     NOW(),
@@ -158,28 +158,59 @@ class Card:
         return connectToMySQL(db).query_db(query, new_card_dict)
 
 
-    def get_all_cards():
+    @classmethod
+    def get_all_cards(cls):
         query = """
                 SELECT * FROM cards;
                 """
         results = connectToMySQL(db).query_db(query)
         if results:
-            card_list = []
-            for result in results:
-                card = Card(result)
-                card_list.append(card)
-            return card_list # Return cards as objects
+            return [Card(result) for result in results]
 
 
-    def get_one_card(self, card_name_dict):
+    @classmethod
+    def get_one_card(cls, card_name_dict):
         query = """
                 SELECT * FROM cards
                 WHERE card_name = %(card_name)s;
                 """
         result = connectToMySQL(db).query_db(query, card_name_dict)
         if result:
-            card = Card(result[0])
-            return card
+            return Card(result[0])
+    
+
+    @classmethod
+    def get_card_name_for_validation(cls, card_edits_dict):
+        query = """
+                SELECT * FROM cards
+                WHERE card_name = %(card_name)s;
+                """
+        return connectToMySQL(db).query_db(query, card_edits_dict)
+
+
+    @classmethod
+    def get_card_filename_for_validation(cls, card_edits_dict):
+        query = """
+                SELECT * FROM cards
+                WHERE filename = %(filename)s;
+                """
+        return connectToMySQL(db).query_db(query, card_edits_dict)
+
+
+    def update_card(self, card_edits_dict):
+        query = """
+                UPDATE cards
+                SET
+                    card_name = %(card_name)s,
+                    description = %(description)s,
+                    type = %(type)s,
+                    released_on = %(released_on)s,
+                    status = %(status)s,
+                    quantity = %(quantity)s,
+                    filename = %(filename)s
+                WHERE id = %(id)s;
+                """
+        return connectToMySQL(db).query_db(query, card_edits_dict)
 
 
     def like_card():

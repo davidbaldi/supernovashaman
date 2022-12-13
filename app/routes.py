@@ -1,4 +1,5 @@
 from app import app
+from app.forms import EditCardForm
 from app.forms import EditProfileForm
 from app.forms import LoginForm
 from app.forms import AddNewCardForm
@@ -133,7 +134,7 @@ def display_all_cards():
 
 @app.route('/admin/cards/add_card', methods=['GET', 'POST'])
 @login_required
-def add_card():
+def admin_add_card():
     form = AddNewCardForm()
     if form.validate_on_submit():
         new_card_dict = {
@@ -146,12 +147,42 @@ def add_card():
             'filename': form.filename.data
         }
         Card.add_card(new_card_dict=new_card_dict)
-        return redirect('/admin/add_card')
+        return redirect('/admin/cards/add_card')
     return render_template('admin_add_card.html', form=form)
 
 
-@app.route('/admin/cards/view_all_cards')
+@app.route('/admin/cards/all')
 @login_required
-def view_all_cards():
+def admin_view_all_cards():
     cards = Card.get_all_cards()
-    return render_template('admin_view_all_cards.html', cards=cards)
+    return render_template('admin_view_cards.html', cards=cards)
+
+
+@app.route('/admin/cards/<card_name>')
+@login_required
+def admin_view_one_card(card_name):
+    card_name_dict = {'card_name': card_name}
+    card = Card.get_one_card(card_name_dict=card_name_dict)
+    return render_template('admin_view_card.html', card=card)
+
+
+@app.route('/admin/cards/<card_name>/edit', methods=['GET', 'POST'])
+@login_required
+def admin_edit_one_card(card_name):
+    card_name_dict = {'card_name': card_name}
+    card = Card.get_one_card(card_name_dict=card_name_dict)
+    form = EditCardForm(card.__dict__)
+    if form.validate_on_submit():
+        if form.validate_card_edits():
+            card.update_card(card.__dict__)
+        flash('Your changes have been saved.')
+        return redirect(request.url)
+    elif request.method == 'GET':
+        form.card_name.data = card.card_name
+        form.description.data = card.description
+        form.type.data = card.type
+        form.released_on.data = card.released_on
+        form.status.data = card.status
+        form.quantity.data = card.quantity
+        form.filename.data = card.filename
+    return render_template('admin_edit_card_form.html', title='Edit a Card', form=form)

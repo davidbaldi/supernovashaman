@@ -1,4 +1,5 @@
 from app.models import User
+from app.models import Card
 from flask_wtf import FlaskForm
 from flask import flash
 from mysqlconnection import connectToMySQL
@@ -55,8 +56,10 @@ class RegistrationForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=255)])
+    username = StringField('Username', validators=[
+        DataRequired()])
+    about_me = TextAreaField('About me', validators=[
+        Length(min=0, max=255)])
     submit = SubmitField('Submit')
 
 
@@ -95,3 +98,46 @@ class AddNewCardForm(FlaskForm):
         DataRequired(),
         Length(min=0, max=127)])
     submit = SubmitField('Add card')
+
+
+class EditCardForm(FlaskForm):
+    card_name = StringField('Card Name', validators=[
+        DataRequired()])
+    description = TextAreaField('Description', validators=[
+        DataRequired(),
+        Length(min=0, max=1023)])
+    type = StringField('Type', validators=[
+        DataRequired(),
+        Length(min=0, max=15)])
+    released_on = DateField('Release Date', validators=[
+        DataRequired()])
+    status = StringField('Status', validators=[
+        DataRequired(),
+        Length(min=0, max=32)])
+    quantity = IntegerField('Quantity', validators=[
+        DataRequired()])
+    filename = StringField('Filename', validators=[
+        DataRequired(),
+        Length(min=0, max=127)])
+    submit = SubmitField('Submit Changes')
+
+
+    def __init__(self, card_stats, *args, **kwargs):
+        super(EditCardForm, self).__init__(*args, **kwargs)
+        self.original_card_name = card_stats['card_name']
+        self.original_filename = card_stats['filename']
+
+
+    def validate_card_edits(self, new_card_name, new_filename):
+        card_edits_dict = {
+            'new_card_name': new_card_name,
+            'new_filename': new_filename
+            }
+        if new_card_name.data != self.original_card_name:
+            card = Card.get_card_name_for_validation(card_edits_dict=card_edits_dict)
+            if card is not None:
+                raise ValidationError('Please use a different card name.')
+        if new_filename.data != self.original_filename:
+            card = Card.get_card_filename_for_validation(card_edits_dict=card_edits_dict)
+            if card is not None:
+                raise ValidationError('Please use a different filename.')
