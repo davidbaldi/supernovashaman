@@ -57,6 +57,11 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>
+            {{ form.submit() }}
+        </p>
+        <p>
+            <a href="/admin/cards/{{ card.card_name }}/delete_card" class="red_delete_link"><b>Delete {{ card.card_name }}? [Warning: Final!]</b></a>
+        </p>
     </form>
 {% endblock %}

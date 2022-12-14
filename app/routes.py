@@ -180,15 +180,6 @@ def admin_view_all_cards():
     return render_template('admin_view_cards.html', cards=cards)
 
 
-# # Maybe delete...
-# @app.route('/admin/cards/<card_name>')
-# @login_required
-# def admin_view_one_card(card_name):
-#     card_name_dict = {'card_name': card_name}
-#     card = Card.get_one_card(card_name_dict=card_name_dict)
-#     return render_template('admin_view_card.html', card=card)
-
-
 @app.route('/admin/cards/<card_name>/edit', methods=['GET', 'POST'])
 @login_required
 def admin_edit_one_card(card_name):
