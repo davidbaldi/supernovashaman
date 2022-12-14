@@ -164,13 +164,13 @@ def admin_add_card():
 
 
 # 'GET' or 'POST' or both?
-@app.route('/admin/cards/<card_name>/delete_card', methods=['GET', 'POST'])
+@app.route('/admin/cards/<card_name>/delete_card', methods=['GET'])
 @login_required
 def admin_delete_card(card_name):
     card_name_dict = {'card_name': card_name}
     Card.delete_card(card_name_dict=card_name_dict)
     flash('Card deleted!')
-    return redirect(request.url)
+    return redirect(url_for('admin_view_all_cards'))
 
 
 @app.route('/admin/cards/all')
