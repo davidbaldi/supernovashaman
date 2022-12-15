@@ -11,6 +11,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
         <p>
             {{ form.about_me.label }}<br>
             {{ form.about_me(cols=50, rows=4) }}<br>
@@ -18,6 +19,23 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <br>
+        <p>
+            {{ form.birthday.label }}
+            {{ form.birthday() }}<br>
+        </p>
+        <br>
+        <p>
+            {{ form.gift_bday.label }}
+            {{ form.gift_bday() }}<br>
+            {{ form.gift_xmas.label }}
+            {{ form.gift_xmas()}}<br>
+        </p>
+        <br>
+        <p>
+            {{ form.submit() }}
+        </p>
+        <!-- Need (user table fields): name_first, name_last, bday, bday_gift, xmas_gift -->
+        <!-- Need (address table fields): [street, city, state, zip] -->
     </form>
 {% endblock %}

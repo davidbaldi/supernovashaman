@@ -116,12 +116,18 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.birthday = form.birthday.data
+        current_user.gift_bday = form.gift_bday.data
+        current_user.gift_xmas = form.gift_xmas.data
         current_user.update_profile(current_user.__dict__)
         flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.birthday.data = current_user.birthday
+        form.gift_bday.data = current_user.gift_bday
+        form.gift_xmas.data = current_user.gift_xmas
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 

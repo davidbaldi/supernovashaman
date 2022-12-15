@@ -1,31 +1,29 @@
 # supernovashaman
 This is largely a clone of Miguel Grinberg's 'Microblog' (https://github.com/miguelgrinberg/microblog).
+I am deeply indebted to Mr. Grinberg for this sandbox of sorts!
 
+~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
 
+MISSION STATEMENT
+
+Spirictraft is a strategy card game I designed for my family and friends once upon a Christmas and while, unfortunately, they all thought it was "too complicated to play,"  they did like the cards themselves and some of them even expressed interest in a simpler remake of the game. So, I figured I'd rework Spiritcraft into something that doesn't last for more than a half hour per session and can be played well and enjoyably without much experience. That way, I could issue new cards to keep the game fresh or just for the fun of drawing and, for others, the fun of collecting art pieces. If you're reading this, get your unique access code from me, sign up, and start collecting some Spiritcraft cards! Making this card game has been incredibly, indescribably meaningful and motivating for me. So, thank you immensely for participating.
+
+~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
 
 Key differences between Grinberg's Microblog and this project include:
 
 - The SQLAlchemy ORM has been replaced in favor of PyMySQL and raw SQL statments.
 - '.format()' methods have been replaced with 'f'-strings
 
-
-
 Key differences between Grinberg's Microbog and this project will include:
 
-- There will be no Bootstrap. Instead, I will have built the HTML and CSS entirely from scrap.
-- There will be no localization/internationalization.
+- No Bootstrap. Instead, I will have built the HTML and CSS entirely from scrap.
+- No localization/internationalization.
 - Password validation, e.g. "must include a number, letter, special character..."
 - Search capabilities other than Elasticsearch. I have found Elasticsearch difficult to work with.
+- Disqus comment section for each card
 
-
-
-
-MISSION STATEMENT
-
-Spirictraft is a strategy card game I designed for my family and friends once upon a Christmas and while, unfortunately, they all thought it was "too complicated to play,"  they did like the cards themselves and some of them even expressed interest in a simpler remake of the game. So, I figured I'd rework Spiritcraft into something that doesn't last for more than a half hour per session and can be played well and enjoyably without much experience. That way, I could issue new cards to keep the game fresh or just for the fun of drawing and, for others, the fun of collecting art pieces. If you're reading this, get your unique access code from me, sign up, and start collecting some Spiritcraft cards! Making this card game has been incredibly, indescribably meaningful and motivating for me. So, thank you immensely for participating.
-
-
-
+~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
 
 UPCOMING FEATURES (in no particular order)
 
@@ -34,13 +32,14 @@ UPCOMING FEATURES (in no particular order)
 - "Trader's Tent" feature
 - "What I do with your data" page (A: "Absolutely nothing.")
 - Add favicons
-- Admin access
+- Admin access via Flask-Admin
 - API: Buy me a coffee
 - API: Facebook
 - API: Instagram
 - API: PayPal
 - API: Twitter
 - Avatar: Gravatar or upload
+- Notification in user profile to sign up with Gravatar
 - Card mgmt: Add an "upload image" link in "add card" form
 - Checkbox on profile: Receive a free birthday gift for upcoming year?
 - Checkbox on profile: Receive a free Christmas gift for upcoming year?
@@ -63,4 +62,4 @@ UPCOMING FEATURES (in no particular order)
 - Switches to show/not show retired cards
 - Upon registration, log user in automatically
 
-"Powered by Python"
+"Powered by Python"f

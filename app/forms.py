@@ -63,6 +63,13 @@ class EditProfileForm(FlaskForm):
         DataRequired()])
     about_me = TextAreaField('About me', validators=[
         Length(min=0, max=255)])
+    name_first = StringField('First name', validators=[
+        Length(min=0, max=63)])
+    name_last = StringField('Last name', validators=[
+        Length(min=0, max=63)])
+    birthday = DateField('Birthday')
+    gift_bday = BooleanField('Send me a birthday gift next year!')
+    gift_xmas = BooleanField('Send me a Christmas gift next year!')
     submit = SubmitField('Submit')
 
 

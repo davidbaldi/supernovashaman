@@ -27,10 +27,9 @@ class User(UserMixin):
         self.about_me = user_dict['about_me']
         self.registered_on = None
         self.admin_privilege = None
-        self.birthday = None
-        self.wants_birthday_gift = None
-        self.wants_christmas_gift = None
-        self.invite_code: None
+        self.birthday = user_dict['birthday']
+        self.gift_bday = user_dict['gift_bday']
+        self.gift_xmas = user_dict['gift_xmas']
         self.favorite_cards = []
         self.address = {}
         self.cart = {}
@@ -106,7 +105,10 @@ class User(UserMixin):
         query = """
                 UPDATE users
                 SET username = %(username)s,
-                    about_me = %(about_me)s
+                    about_me = %(about_me)s,
+                    birthday = %(birthday)s,
+                    gift_bday = %(gift_bday)s,
+                    gift_xmas = %(gift_xmas)s
                 WHERE id = %(id)s;
                 """
         return connectToMySQL(db).query_db(query, current_user)
