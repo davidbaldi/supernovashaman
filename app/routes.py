@@ -116,6 +116,8 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.name_first = form.name_first.data
+        current_user.name_last = form.name_last.data
         current_user.birthday = form.birthday.data
         current_user.gift_bday = form.gift_bday.data
         current_user.gift_xmas = form.gift_xmas.data
@@ -125,6 +127,8 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.name_first.data = current_user.name_first
+        form.name_last.data = current_user.name_last
         form.birthday.data = current_user.birthday
         form.gift_bday.data = current_user.gift_bday
         form.gift_xmas.data = current_user.gift_xmas

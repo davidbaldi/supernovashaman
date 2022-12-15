@@ -106,6 +106,8 @@ class User(UserMixin):
                 UPDATE users
                 SET username = %(username)s,
                     about_me = %(about_me)s,
+                    name_first = %(name_first)s,
+                    name_last = %(name_last)s,
                     birthday = %(birthday)s,
                     gift_bday = %(gift_bday)s,
                     gift_xmas = %(gift_xmas)s
