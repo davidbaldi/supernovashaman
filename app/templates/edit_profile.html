@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Edit Profile</h1>
+    <h4>Others only see your username and 'About me!'</h4>
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
@@ -19,12 +20,22 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <hr>
+        <p>
+            {{ form.name_first.label }}
+            {{ form.name_first() }}
+        </p>
+        <br>
+        <p>
+            {{ form.name_last.label }}
+            {{ form.name_last() }}
+        </p>
         <br>
         <p>
             {{ form.birthday.label }}
             {{ form.birthday() }}<br>
         </p>
-        <br>
+        <hr>
         <p>
             {{ form.gift_bday.label }}
             {{ form.gift_bday() }}<br>

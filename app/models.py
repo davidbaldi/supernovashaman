@@ -22,8 +22,8 @@ class User(UserMixin):
         self.email = user_dict['email']
         self.username = user_dict['username']
         self.password_hash = user_dict['password_hash']
-        self.name_first = None
-        self.name_last = None
+        self.name_first = user_dict['name_first']
+        self.name_last = user_dict['name_last']
         self.about_me = user_dict['about_me']
         self.registered_on = None
         self.admin_privilege = None
