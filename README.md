@@ -27,6 +27,7 @@ Key differences between Grinberg's Microbog and this project will include:
 
 UPCOMING FEATURES (in no particular order)
 
+- CSS grid all the way!
 - "Build-a-Card" feature
 - "Greatest Gazette" feature
 - "Trader's Tent" feature
@@ -41,25 +42,30 @@ UPCOMING FEATURES (in no particular order)
 - Avatar: Gravatar or upload
 - Notification in user profile to sign up with Gravatar
 - Card mgmt: Add an "upload image" link in "add card" form
-- Checkbox on profile: Receive a free birthday gift for upcoming year?
-- Checkbox on profile: Receive a free Christmas gift for upcoming year?
 - Database changes: Shopping cart, Orders
 - Highlight most popular cards
-- Invite code feature added to registration form
 - Form for making recommendations
 - Form for reporting an issue (minor bugs, typos, etc.)
 - Front page as news page
-- Include address form on profile (plus reminder for user to add address)
-- Meditation Bell
+- Include address form on profile (plus one-time reminder for user to add address)
+- Gray out shopping cart capabilities if no address, full name in profile.
+- Move Buddha Bell
 - No more cards: Sign-up feature to be notified when a card is restocked
-- No more cards: Gray out cards that have a quantity of 0
+- No more cards: Gray out cards that have a quantity of 0 (Or overlay "All gone!" symbol)
 - Polls ("What feature should I work on next?" etc.)
 - QR code to link to site (code found on promotional cards)
 - Responsive design
 - Restrictions on usernames, e.g. can't have 'shaman', 'SHAMAN', etc. in name
 - Shopping/purchase capabilities
 - Small CSS slide-up box that says, "Got it! Added to your favorites..."
-- Switches to show/not show retired cards
+- Switches to show/not show retired cards, in-stock cards
 - Upon registration, log user in automatically
-
-"Powered by Python"f
+- Work on graying out profile info: no birthday checkbox if no address or if no name
+- Prepare empty database "catch-alls"
+- Supernova Shaman image on left of reg. form, Pythons below login form
+- Admin forms: gray out Entity/Genera vs. Item/Order choices
+- Badges over images/in right-hand corner of single-card pages: "New!," "Editor's Choice," "Running out!"
+- "Powered by Python"
+- Add available cards (original-art-only cards) soon...
+- In card profiles: "This card is best compatible with (...)
+- Brainstorm card fields
