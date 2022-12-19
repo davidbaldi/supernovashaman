@@ -86,8 +86,6 @@ address { font-style:normal }
     border-radius: 5px;
 }
 
-/* Main components (base.html template, etc.) */
-
 .all_cards_table,
 .all_cards_thead,
 .all_cards_th,
@@ -104,3 +102,6 @@ address { font-style:normal }
 .red_flashed_messages {
     color: red;
 }
+
+/* View All Cards Main Components */
+
