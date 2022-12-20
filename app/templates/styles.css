@@ -1,0 +1,274 @@
+/* Tantek Celik's reset */
+:link,:visited { text-decoration:none }
+ul, ol { list-style:none }
+/* h1, h2, h3, h4, h5, h6, pre, code { font-size:1em; } */
+ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input
+{ margin:0; padding:0 }
+a img, :link img, :visited img { border:none }
+address { font-style:normal }
+
+/* Corey's reset */
+* { box-sizing: border-box }
+
+/* End resets */
+/* Begin David Baldi's CSS */
+/* Main components (base.html template, etc.) */
+
+* {
+    font-family: Calibri; 
+}
+
+#entire-login-container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+}
+
+.login-box-center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-fieldset {
+    padding: 10px 15px 15px 15px;
+    width: 300px;
+    border-radius: 15px;
+}
+
+.login-fieldset-legend {
+    margin-left: 4px;
+}
+
+.login-field {
+    height: 35px;
+    padding: 2.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-username-field-container,
+.login-password-field-container {
+    display: flex;
+    justify-content: right;
+}
+
+.username-input-field-label,
+.password-input-field-label {
+    width: 30%;
+}
+
+.username-input-field,
+.password-input-field {
+    margin: 2.5%;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.login-remember-me-field-container {
+    display: flex;
+    justify-content: left;
+}
+
+.remember-me-checkbox {
+    margin: 2.5%;
+}
+
+.login-submit-button-field-container {
+    display: flex;
+}
+
+.login-button {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.all_cards_table,
+.all_cards_thead,
+.all_cards_th,
+.all_cards_tr,
+.all_cards_td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.red_delete_link {
+    color: red;
+}
+
+.red_flashed_messages {
+    color: red;
+}
+
+/* 'View Cards' Main Components */
+
+.view-cards-entire-container {
+    height: 100vh;
+    width: 100vw;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-rows: 15vh minmax(0, max-content) minmax(0, max-content) minmax(0, max-content) auto;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-areas: 
+        ". . ."
+        ". notifications ."
+        ". switches ."
+        ". page-info ."
+        "miscellaneous-blurb all-cards email-blurb";
+}
+
+.fixed-banner-and-nav-bar {
+    position: fixed;
+    border-bottom: 1pt solid black;
+    height: 15vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 10vh 5vh;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-areas:
+        "logo banner blank"
+        "menu-left . menu-right";
+    justify-items: stretch;
+    /* background-color: antiquewhite; */
+}
+
+.logo {
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.banner {
+    grid-area: banner;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellowgreen; */
+}
+
+.blank {
+    grid-area: blank;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: violet; */
+}
+
+.menu-left {
+    grid-area: menu-left;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 5%;
+    border-top: 2pt solid black;
+    border-bottom: 2pt solid black;
+    width: 50vw;
+    justify-self: start;
+    /* background-color: tomato; */
+}
+
+.menu-right {
+    grid-area: menu-right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5%;
+    border-top: 2pt solid black;
+    border-bottom: 2pt solid black;
+    width: 50vw;
+    justify-self: end;
+    /* background-color: springgreen; */
+}
+
+.notifications {
+    grid-area: notifications;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-left: 2pt solid black;
+    border-right: 2pt solid black;
+    /* border-bottom: 2pt solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: cadetblue; */
+}
+
+.card-switches {
+    grid-area: switches;
+    padding: 1%;
+    border-left: 2pt solid black;
+    border-right: 2pt solid black;
+    border-bottom: 2pt solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.page-info {
+    grid-area: page-info;
+    padding: 1%;
+    border-left: 2pt solid black;
+    border-right: 2pt solid black;
+    border-bottom: 2pt solid black;
+    /* background-color: blueviolet; */
+}
+
+.all-cards {
+    grid-area: all-cards;
+    padding: 2.5%;
+    border-right: 2pt solid black;
+    border-left: 2pt solid black;
+    display: flex;
+    /* justify-content: ; */
+    /* align-items: ; */
+    /* flex-wrap: ; */
+    overflow-y: scroll;
+    /* background-color: aquamarine; */
+}
+
+/* Hide scrollbar Chrome, Safari, Opera */
+.all-cards::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar IE, Edge, Firefox*/
+.example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.email-blurb {
+    grid-area: email-blurb;
+    margin: 15px;
+    border: 2pt solid black;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    justify-self: end;
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: chocolate; */
+}
+
+.miscellaneous-blurb {
+    grid-area: miscellaneous-blurb;
+    margin: 15px;
+    border: 2pt solid black;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    justify-self: start;
+    align-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color:lightblue; */
+}
