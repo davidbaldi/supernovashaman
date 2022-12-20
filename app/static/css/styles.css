@@ -103,6 +103,28 @@ address { font-style:normal }
     color: red;
 }
 
+/* Admin Dashboard */
+
+.admin-main-page {
+    grid-area: all-cards;
+    padding: 2.5%;
+    border-right: 2pt solid black;
+    border-left: 2pt solid black;
+    overflow-y: scroll;
+    /* background-color: aquamarine; */
+}
+
+/* Hide scrollbar Chrome, Safari, Opera */
+.admin-main-page::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar IE, Edge, Firefox*/
+.admin-main-page {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* 'View Cards' Main Components */
 
 .view-cards-entire-container {
@@ -225,9 +247,6 @@ address { font-style:normal }
     border-right: 2pt solid black;
     border-left: 2pt solid black;
     display: flex;
-    /* justify-content: ; */
-    /* align-items: ; */
-    /* flex-wrap: ; */
     overflow-y: scroll;
     /* background-color: aquamarine; */
 }
@@ -238,7 +257,7 @@ address { font-style:normal }
 }
 
 /* Hide scrollbar IE, Edge, Firefox*/
-.example {
+.all-cards {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -271,4 +290,52 @@ address { font-style:normal }
     justify-content: center;
     align-items: center;
     /* background-color:lightblue; */
+}
+
+/* 404 Main Components */
+
+.page-not-found {
+    grid-area: all-cards;
+}
+
+/* 'Add Card' Form Components */
+
+.admin-add-card-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-add-card-fieldset {
+    border-radius: 2%;
+    margin: 2.5%;
+    padding: 1%;
+    width: 25vw;
+    height: fit-content;
+}
+
+/* 'Edit Card' Form Components */
+
+.admin-edit-card-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-edit-card-fieldset {
+    border-radius: 2%;
+    margin: 2.5%;
+    padding: 1%;
+    width: 25vw;
+    height: fit-content;
+}
+
+.admin-edit-card-h1-extender {
+    width: fit-content;
+}
+
+.admin-edit-card-image {
+    width: 100px;
 }

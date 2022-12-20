@@ -1,40 +1,46 @@
-{% extends "base.html" %}
+{% extends "admin_base.html" %}
 
 {% block content %}
-    <h1>Add a Card</h1>
-    Or, go back to <b><a href="/admin/cards/all">view all cards</a></b>.
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.card_name.label }}<br>
-            {{ form.card_name(size=64) }}
-        </p>
-        <p>
-            {{ form.description.label }}<br>
-            {{ form.description(size=64) }}<br>
-        </p>
-        <p>
-            {{ form.type.label }}<br>
-            {{ form.type() }}<br>
-        </p>
-        <p>
-            {{ form.released_on.label }}<br>
-            {{ form.released_on(size=64) }}<br>
-        </p>
-        <p>
-            {{ form.status.label }}<br>
-            {{ form.status() }}<br>
-        </p>
-        <p>
-            {{ form.quantity.label }}<br>
-            {{ form.quantity(size=64) }}<br>
-        </p>
-        <p>
-            {{ form.filename.label }}<br>
-            {{ form.filename(size=64) }}<br>
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-    </form>
+    <div class="admin-add-card-container">
+        <fieldset class="admin-add-card-fieldset">
+            <h1>Add a Card</h1>
+            Or, go back to <b><a href="/admin/cards/all">view all cards</a></b>.
+            <hr>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.card_name.label }}<br>
+                    {{ form.card_name() }}
+                </p>
+                <p>
+                    {{ form.description.label }}<br>
+                    {{ form.description(size=64) }}<br>
+                </p>
+                <p>
+                    {{ form.type.label }}<br>
+                    {{ form.type() }}<br>
+                </p>
+                <p>
+                    {{ form.released_on.label }}<br>
+                    {{ form.released_on(size=64) }}<br>
+                </p>
+                <p>
+                    {{ form.status.label }}<br>
+                    {{ form.status() }}<br>
+                </p>
+                <p>
+                    {{ form.quantity.label }}<br>
+                    {{ form.quantity(size=64) }}<br>
+                </p>
+                <p>
+                    {{ form.filename.label }}<br>
+                    {{ form.filename() }}<br>
+                </p>
+                <br>
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
+        </fieldset>
+    </div>
 {% endblock %}

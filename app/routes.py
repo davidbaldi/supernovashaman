@@ -135,13 +135,7 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
-# Temporary
-@app.route('/cards')
-@login_required
-def display_all_cards():
-    return render_template('_card_raw.html', card=None)
-
-
+# Fix this base template inheritance first.
 @app.route('/admin')
 @login_required
 def admin_dashboard():
@@ -224,3 +218,8 @@ def admin_edit_one_card(card_name):
             form=form,
             card=card
             )
+
+@app.route('/cards')
+def view_cards():
+    cards = Card.get_all_cards()
+    return render_template('view_cards.html', cards=cards)

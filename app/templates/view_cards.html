@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card-switches">
+        SWITCHES
+    </div>
+    <div class="page-info">
+        PAGE-INFO<br>
+    </div>
+    <div class="all-cards">
+        {% for card in cards %}
+            {% include '_card.html' %}
+        {% endfor %}
+    </div>
+{% endblock content %}

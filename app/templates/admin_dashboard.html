@@ -1,13 +1,20 @@
-{% extends "base.html" %}
+{% extends "admin_base.html" %}
 
 {% block content %}
-    <h1>Admin Stuffs. Yup.</h1>
-    <ul>
-        <li>
-            You can <b><a href="/admin/cards/add_card">add a card</a></b>.
-        </li>
-        <li>    
-            Or, <b><a href="/admin/cards/all">view all cards</a></b> (and edit them there).
-        </li>
-    </ul>
+    <div class="admin-main-page">
+        <h1>Admin Stuff</h1>
+        <p>
+            {% for card in cards %}
+                {% include '_card.html' %}
+            {% endfor %}
+        </p>
+        <ul>
+            <li>
+                You can <b><a href="/admin/cards/add_card">add a card</a></b>.
+            </li>
+            <li>    
+                Or, <b><a href="/admin/cards/all">view all cards</a></b> (and edit them there).
+            </li>
+        </ul>
+    </div>
 {% endblock %}

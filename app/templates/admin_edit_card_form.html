@@ -1,67 +1,73 @@
-{% extends "base.html" %}
+{% extends "admin_base.html" %}
 
 {% block content %}
-    <h1>Edit Card no. {{ card.id }}</h1>
-    <h4>Or, go back to <a href="{{ url_for('admin_dashboard') }}">dashboard</a>.</h4>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            <img src="{{ url_for('static', filename=card.filename) }}">
-        </p>
-        <p>
-            {{ form.card_name.label }}<br>
-            {{ form.card_name(size=32) }}<br>
-            {% for error in form.card_name.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.description.label }}<br>
-            {{ form.description(cols=50, rows=4) }}<br>
-            {% for error in form.description.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.type.label }}<br>
-            {{ form.type(cols=50, rows=4) }}<br>
-            {% for error in form.type.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.released_on.label }}<br>
-            {{ form.released_on(cols=50, rows=4) }}<br>
-            {% for error in form.released_on.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.status.label }}<br>
-            {{ form.status(cols=50, rows=4) }}<br>
-            {% for error in form.status.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.quantity.label }}<br>
-            {{ form.quantity(cols=50, rows=4) }}<br>
-            {% for error in form.quantity.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.filename.label }}<br>
-            {{ form.filename(cols=50, rows=4) }}<br>
-            {% for error in form.filename.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-        <p>
-            <a href="/admin/cards/{{ card.card_name }}/delete_card" class="red_delete_link"><b>Delete {{ card.card_name }}? [Warning: Final!]</b></a>
-        </p>
-    </form>
+    <div class="admin-edit-card-container">
+        <fieldset class="admin-edit-card-fieldset">
+            <div class="admin-edit-card-h1-extender">
+                <h1>Edit Card {{ card.card_name }}</h1>
+            </div>
+                <h4>Or, go back to <a href="{{ url_for('admin_dashboard') }}">dashboard</a>.</h4>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    <img src="{{ url_for('static', filename=card.filename) }}" class="admin-edit-card-image">
+                </p>
+                <p>
+                    {{ form.card_name.label }}<br>
+                    {{ form.card_name(size=32) }}<br>
+                    {% for error in form.card_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.description.label }}<br>
+                    {{ form.description(cols=50, rows=4) }}<br>
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.type.label }}<br>
+                    {{ form.type(cols=50, rows=4) }}<br>
+                    {% for error in form.type.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.released_on.label }}<br>
+                    {{ form.released_on(cols=50, rows=4) }}<br>
+                    {% for error in form.released_on.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.status.label }}<br>
+                    {{ form.status(cols=50, rows=4) }}<br>
+                    {% for error in form.status.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.quantity.label }}<br>
+                    {{ form.quantity(cols=50, rows=4) }}<br>
+                    {% for error in form.quantity.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.filename.label }}<br>
+                    {{ form.filename(cols=50, rows=4) }}<br>
+                    {% for error in form.filename.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.submit() }}
+                </p>
+                <p>
+                    <a href="/admin/cards/{{ card.card_name }}/delete_card" class="red_delete_link"><b>Delete {{ card.card_name }}? [Warning: Final!]</b></a>
+                </p>
+            </form>
+        </fieldset>
+    </div>
 {% endblock %}
