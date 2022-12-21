@@ -1,19 +1,25 @@
 # supernovashaman
-This is largely a clone of Miguel Grinberg's 'Microblog' (https://github.com/miguelgrinberg/microblog).
+This is partly a clone of Miguel Grinberg's 'Microblog' (https://github.com/miguelgrinberg/microblog).
 I am deeply indebted to Mr. Grinberg for this sandbox of sorts!
 
 ~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
 
 MISSION STATEMENT
 
-Spirictraft is a strategy card game I designed for my family and friends once upon a Christmas and while, unfortunately, they all thought it was "too complicated to play,"  they did like the cards themselves and some of them even expressed interest in a simpler remake of the game. So, I figured I'd rework Spiritcraft into something that doesn't last for more than a half hour per session and can be played well and enjoyably without much experience. That way, I could issue new cards to keep the game fresh or just for the fun of drawing and, for others, the fun of collecting art pieces. If you're reading this, get your unique access code from me, sign up, and start collecting some Spiritcraft cards! Making this card game has been incredibly, indescribably meaningful and motivating for me. So, thank you immensely for participating.
+This web app hosts the Spiritcraft collectable strategy card game featuring cards that users can "favorite" and, hopefully, by Christmas 2023, actually purchase.
+
+Spirictraft is a strategy card game I designed for my family and friends once upon a Christmas and while, unfortunately, they all thought it was "too complicated to play,"  they did like the cards themselves and some of them even expressed interest in a simpler remake of the game. So, I figured I'd rework Spiritcraft into something that doesn't last for more than a half hour per session and can be played well and enjoyably without much experience. That way, I could issue new cards to keep the game fresh or just for the fun of drawing and, for others, the fun of collecting art pieces. If you're reading this, get your unique access code from me, sign up, and start collecting some Spiritcraft cards! Making this card game has been incredibly meaningful and motivating for me. So, thank you immensely for participating.
+
 
 ~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
+
 
 Key differences between Grinberg's Microblog and this project include:
 
 - The SQLAlchemy ORM has been replaced in favor of PyMySQL and raw SQL statments.
-- '.format()' methods have been replaced with 'f'-strings
+- '.format()' methods have been replaced with 'f'-strings.
+- There is no Bootstrap employed anywhere on the site.
+
 
 Key differences between Grinberg's Microbog and this project will include:
 
@@ -23,7 +29,9 @@ Key differences between Grinberg's Microbog and this project will include:
 - Search capabilities other than Elasticsearch. I have found Elasticsearch difficult to work with.
 - Disqus comment section for each card
 
+
 ~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.
+
 
 UPCOMING FEATURES (in no particular order)
 

@@ -18,73 +18,7 @@ address { font-style:normal }
     font-family: Calibri; 
 }
 
-#entire-login-container {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-}
-
-.login-box-center {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-fieldset {
-    padding: 10px 15px 15px 15px;
-    width: 300px;
-    border-radius: 15px;
-}
-
-.login-fieldset-legend {
-    margin-left: 4px;
-}
-
-.login-field {
-    height: 35px;
-    padding: 2.5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-username-field-container,
-.login-password-field-container {
-    display: flex;
-    justify-content: right;
-}
-
-.username-input-field-label,
-.password-input-field-label {
-    width: 30%;
-}
-
-.username-input-field,
-.password-input-field {
-    margin: 2.5%;
-    width: 80%;
-    border-radius: 5px;
-}
-
-.login-remember-me-field-container {
-    display: flex;
-    justify-content: left;
-}
-
-.remember-me-checkbox {
-    margin: 2.5%;
-}
-
-.login-submit-button-field-container {
-    display: flex;
-}
-
-.login-button {
-    width: 100%;
-    border-radius: 5px;
-}
+/* Uncategorized section */
 
 .all_cards_table,
 .all_cards_thead,
@@ -114,12 +48,10 @@ address { font-style:normal }
     /* background-color: aquamarine; */
 }
 
-/* Hide scrollbar Chrome, Safari, Opera */
 .admin-main-page::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar IE, Edge, Firefox*/
 .admin-main-page {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -325,17 +257,309 @@ address { font-style:normal }
 }
 
 .admin-edit-card-fieldset {
-    border-radius: 2%;
+    border-radius: 10px;
     margin: 2.5%;
     padding: 1%;
     width: 25vw;
     height: fit-content;
 }
 
-.admin-edit-card-h1-extender {
-    width: fit-content;
+.admin-edit-card-image {
+    outline: 1pt solid black;
+    border-radius: 5%;
+    width: 175px;
 }
 
-.admin-edit-card-image {
-    width: 100px;
+/* 'Profile' Main Components */
+
+.profile-contents {
+    grid-area: all-cards;
 }
+
+.user-profile-pic {
+    /* border: 1pt solid black; */
+    border-radius: 10px;
+}
+
+/* 'Edit Profile' Main Components */
+
+.edit-profile-contents {
+    grid-area: all-cards;
+}
+
+/*  */
+
+.homepage {
+    grid-area: all-cards;
+    padding: 2.5%;
+    border-right: 2pt solid black;
+    border-left: 2pt solid black;
+    display: flex;
+    overflow-y: scroll;
+}
+
+.homepage::-webkit-scrollbar {
+    display: none;
+}
+
+.homepage {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Login Components */
+
+.login-whole-container {
+    width: 100vw;
+    height: 100vh;
+    /* background-color:antiquewhite; */
+    display: grid;
+    grid-template-rows: 2fr 0.3fr 200px 0.3fr 2fr;
+    grid-template-columns: 1fr 250px 1fr;
+    grid-template-areas:
+        ". notifications ."
+        ". logo-top ."
+        ". login-square ."
+        " . logo-bottom ."
+        ". below-login-form-info .";
+}
+
+.login-square-fieldset {
+    grid-area: login-square;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.login-legend {
+    font-size: large;
+}
+
+.login-username-label-and-field,
+.login-password-label-and-field,
+.login-remember-me-label-and-field,
+.login-submit-button-div {
+    display: flex;
+}
+
+.login-username-label-and-field {
+    margin-top: 3%;
+    margin-bottom: -3%;
+}
+
+.login-password-label-and-field {
+    margin-top: -3%;
+    margin-bottom: -3%;
+}
+
+.login-remember-me-label-and-field {
+    margin-top: -3%;
+    margin-bottom: -3%;
+    align-items: center;
+    justify-content: end;
+}
+
+.login-username-label {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+.login-username-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+
+.login-password-label {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+.login-password-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+
+.login-remember-me-label {
+    font-size: medium;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.login-submit-button-div {
+    margin-top: 10px;
+}
+
+.login-submit-button-itself {
+    border: 2pt solid gray;
+    border-radius: 8px;
+    height: 47.5px;
+    flex-grow: 1;
+    font-size: larger;
+}
+
+.logo-top {
+    grid-area: logo-top;
+    justify-self: center;
+    align-self: end;
+}
+
+.logo-bottom {
+    grid-area: logo-bottom;
+    justify-self: center;
+    align-self: end;
+}
+
+.login-info-underneath {
+    grid-area: below-login-form-info;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+}
+
+.login-logos {
+    width: 250px;
+}
+
+.notifications-box {
+    grid-area: notifications;
+    justify-self: center;
+    align-self: end;
+    color: red;
+}
+
+
+/* Registration Components */
+
+
+.registration-whole-container {
+    width: 100vw;
+    height: 100vh;
+    background-color:antiquewhite;
+    display: grid;
+    grid-template-rows: 2fr 0.3fr 200px 0.3fr 2fr;
+    grid-template-columns: 1fr 250px 1fr;
+    grid-template-areas:
+        ". notifications ."
+        ". logo-top ."
+        ". login-square ."
+        " . logo-bottom ."
+        ". below-login-form-info .";
+}
+
+.login-square-fieldset {
+    grid-area: login-square;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.login-legend {
+    font-size: large;
+}
+
+.login-username-label-and-field,
+.login-password-label-and-field,
+.login-remember-me-label-and-field,
+.login-submit-button-div {
+    display: flex;
+}
+
+.login-username-label-and-field {
+    margin-top: 3%;
+    margin-bottom: -3%;
+}
+
+.login-password-label-and-field {
+    margin-top: -3%;
+    margin-bottom: -3%;
+}
+
+.login-remember-me-label-and-field {
+    margin-top: -3%;
+    margin-bottom: -3%;
+    align-items: center;
+    justify-content: end;
+}
+
+.login-username-label {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+.login-username-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+
+.login-password-label {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+.login-password-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+
+.login-remember-me-label {
+    font-size: medium;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.login-submit-button-div {
+    margin-top: 10px;
+}
+
+.login-submit-button-itself {
+    border: 2pt solid gray;
+    border-radius: 8px;
+    height: 47.5px;
+    flex-grow: 1;
+    font-size: larger;
+}
+
+.logo-top {
+    grid-area: logo-top;
+    justify-self: center;
+    align-self: end;
+}
+
+.logo-bottom {
+    grid-area: logo-bottom;
+    justify-self: center;
+    align-self: end;
+}
+
+.login-info-underneath {
+    grid-area: below-login-form-info;
+    justify-self: center;
+    font-size: small;
+}
+
+.login-logos {
+    width: 250px;
+}
+
+.notifications-box {
+    grid-area: notifications;
+    justify-self: center;
+    align-self: end;
+    color: red;
+}
+
+/* Above are registration components... */

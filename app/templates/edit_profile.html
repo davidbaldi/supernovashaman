@@ -1,52 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Edit Profile</h1>
-    <h4>Others only see your username and 'About me!'</h4>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <br>
-        <p>
-            {{ form.about_me.label }}<br>
-            {{ form.about_me(cols=50, rows=4) }}<br>
-            {% for error in form.about_me.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <hr>
-        <p>
-            {{ form.name_first.label }}
-            {{ form.name_first() }}
-        </p>
-        <br>
-        <p>
-            {{ form.name_last.label }}
-            {{ form.name_last() }}
-        </p>
-        <br>
-        <p>
-            {{ form.birthday.label }}
-            {{ form.birthday() }}<br>
-        </p>
-        <hr>
-        <p>
-            {{ form.gift_bday.label }}
-            {{ form.gift_bday() }}<br>
-            {{ form.gift_xmas.label }}
-            {{ form.gift_xmas()}}<br>
-        </p>
-        <br>
-        <p>
-            {{ form.submit() }}
-        </p>
-        <!-- Need (user table fields): name_first, name_last, bday, bday_gift, xmas_gift -->
-        <!-- Need (address table fields): [street, city, state, zip] -->
-    </form>
+    <div class="edit-profile-contents">
+        <h1>Edit Profile</h1>
+        <h4>Others only see your username and 'About me!'</h4>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <br>
+            <p>
+                {{ form.about_me.label }}<br>
+                {{ form.about_me(cols=50, rows=4) }}<br>
+                {% for error in form.about_me.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <!-- <hr> -->
+            <p>
+                {{ form.name_first.label }}
+                {{ form.name_first() }}
+            </p>
+            <br>
+            <p>
+                {{ form.name_last.label }}
+                {{ form.name_last() }}
+            </p>
+            <br>
+            <p>
+                {{ form.birthday.label }}
+                {{ form.birthday() }}<br>
+            </p>
+            <!-- <hr> -->
+            <p>
+                {{ form.gift_bday.label }}
+                {{ form.gift_bday() }}<br>
+                {{ form.gift_xmas.label }}
+                {{ form.gift_xmas()}}<br>
+            </p>
+            <br>
+            <p>
+                {{ form.submit() }}
+            </p>
+            <!-- Need (user table fields): name_first, name_last, bday, bday_gift, xmas_gift -->
+            <!-- Need (address table fields): [street, city, state, zip] -->
+        </form>
+    </div>
 {% endblock %}

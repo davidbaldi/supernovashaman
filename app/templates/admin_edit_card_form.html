@@ -3,10 +3,8 @@
 {% block content %}
     <div class="admin-edit-card-container">
         <fieldset class="admin-edit-card-fieldset">
-            <div class="admin-edit-card-h1-extender">
-                <h1>Edit Card {{ card.card_name }}</h1>
-            </div>
-                <h4>Or, go back to <a href="{{ url_for('admin_dashboard') }}">dashboard</a>.</h4>
+            <h1>Edit Card <i>{{ card.card_name }}</i></h1>
+            <h4>Or, go back to the <a href="{{ url_for('admin_dashboard') }}">dashboard</a>.</h4>
             <form action="" method="post">
                 {{ form.hidden_tag() }}
                 <p>
@@ -14,14 +12,14 @@
                 </p>
                 <p>
                     {{ form.card_name.label }}<br>
-                    {{ form.card_name(size=32) }}<br>
+                    {{ form.card_name() }}<br>
                     {% for error in form.card_name.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </p>
                 <p>
                     {{ form.description.label }}<br>
-                    {{ form.description(cols=50, rows=4) }}<br>
+                    {{ form.description() }}<br>
                     {% for error in form.description.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}

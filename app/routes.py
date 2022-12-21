@@ -31,16 +31,7 @@ def before_request():
 @app.route('/index')
 @login_required
 def index():
-    posts = [
-        {
-            'author': {'username': 'David B.'},
-            'body': 'Beautiful day in Portage Park!'
-        },
-        {
-            'author': {'username': 'David W.'},
-            'body': 'Beautiful day in Buena Park!'
-        }
-    ]
+    posts = []
     return render_template('index.html', title='Home', posts=posts)
 
 
