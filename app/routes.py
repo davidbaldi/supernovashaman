@@ -47,7 +47,7 @@ def login():
             }
         user = User.get_user_by_username(user_dict)
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash('Invalid username or password', 'invalid_username_or_password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         session['id'] = user.id
@@ -76,16 +76,19 @@ def register():
             'email': form.email.data,
             'password': form.password.data
             }
-        if form.does_email_exist(new_user_dict):
-            flash('Please use a different email.')
-            return render_template('register.html', title='Register', form=form)
         if form.does_username_exist(new_user_dict):
-            flash('Please use a different username.')
+            flash('Please use a different username.', 'use_different_username')
+            return render_template('register.html', title='Register', form=form)
+        if form.does_email_exist(new_user_dict):
+            flash('Please use a different email.', 'use_different_email')
+            return render_template('register.html', title='Register', form=form)
+        if not form.do_passwords_match(form.password.data, form.password2.data):
+            flash('Your passwords do not match.', 'passwords_do_not_match')
             return render_template('register.html', title='Register', form=form)
         User.add_user(new_user_dict)
         user = User.get_user_by_username(new_user_dict)
         user.set_password(new_user_dict)
-        flash(f'Welcome to my site, {form.username.data}!')
+        flash(f'Welcome to my site, {form.username.data}!', 'welcome_message')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 

@@ -12,32 +12,52 @@
 <body>
     <div class="registration-main-container">
         <div class="registration-notifications">
-            {% for error in form.username.errors %}
-                <span style="color: red;">
-                    {{ error }}
-                </span>
-            {% endfor %}
-            {% for error in form.password.errors %}
-                <span style="color: red;">
-                    {{ error }}
-                </span>
-            {% endfor %}
-            {% for error in form.password2.errors %}
-                <span style="color: red;">
-                    {{ error }}
-                </span>
-            {% endfor %}
+            {% with messages = get_flashed_messages(category_filter=['use_different_username']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color: red;">
+                            {{ message }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% with messages = get_flashed_messages(category_filter=['use_different_email']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color: red;">
+                            {{ message }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% with messages = get_flashed_messages(category_filter=['passwords_do_not_match']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color: red;">
+                            {{ message }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
         <fieldset class="registration-fieldset">
             <legend class="registration-legend">
                 Sign up
             </legend>
-            <form action="" method="post" novalidate>
+            <form action="" method="post">
                 {{ form.hidden_tag() }}
                 <div class="registration-username-label-and-field">
                     <label for="registration-username-label" class="registration-username-label">Username</label>
                     <!-- <input type="text" id="registration-username-label" class="registration-username-field"> -->
                     {{ form.username(id='registration-username-label', class_='registration-username-field') }}
+                </div>
+                <!-- next line needs att. -->
+                <div class="registration-email-label-and-field">
+                    <!-- next line needs att. -->
+                    <label for="registration-email-label" class="registration-email-label">Email</label>
+                    <!-- <input type="text" id="registration-username-label" class="registration-username-field"> -->
+                    <!-- next line needs att. -->
+                    {{ form.email(id='registration-email-label', class_='registration-email-field') }}
                 </div>
                 <div class="registration-password-label-and-field">
                     <label for="registration-password-field" class="registration-password-label">Password</label>
@@ -52,6 +72,7 @@
                 <div class="registration-submit-button-div">
                     <!-- <button type="submit" class="registration-submit-button-itself">Sign me up!</button> -->
                     {{ form.submit(class_='registration-submit-button-itself') }}
+                    <!-- {{ form.submit() }} -->
                 </div>
             </form>
         </fieldset>

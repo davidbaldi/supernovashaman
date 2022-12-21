@@ -474,6 +474,7 @@ address { font-style:normal }
 }
 
 .registration-username-label-and-field,
+.registration-email-label-and-field,
 .registration-password-label-and-field,
 .registration-confirm-password-label-and-field,
 .registration-submit-button-div {
@@ -488,6 +489,12 @@ address { font-style:normal }
     margin-bottom: 4%;
     align-items: center;
     /* background-color: aquamarine; */
+}
+
+.registration-email-label-and-field {
+    margin-top: -3%;
+    margin-bottom: 3%;
+    align-items: center;
 }
 
 .registration-password-label-and-field {
@@ -514,6 +521,18 @@ address { font-style:normal }
     margin-top: 5px;
     margin-bottom: 5px;
     flex-grow: 1;
+}
+
+.registration-email-label {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.registration-email-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;    
 }
 
 .registration-password-label {

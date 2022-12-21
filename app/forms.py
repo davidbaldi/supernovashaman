@@ -35,7 +35,8 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
-        'Confirm password', validators=[DataRequired(), EqualTo('password')]
+        # 'Confirm password', validators=[DataRequired(), EqualTo('password')]
+        'Confirm password', validators=[DataRequired()]
         )
     submit = SubmitField('Sign me up!')
 
@@ -56,6 +57,12 @@ class RegistrationForm(FlaskForm):
             """
         if connectToMySQL(db).query_db(query, new_user_dict):
             return True
+
+
+    def do_passwords_match(self, password, password2):
+        if password != password2:
+            return False
+        return True
 
 
 class EditProfileForm(FlaskForm):

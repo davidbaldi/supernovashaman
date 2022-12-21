@@ -12,16 +12,26 @@
 <body>
     <div class="login-whole-container">
         <div class="notifications-box">
-            {% for error in form.username.errors %}
-                <span style="color:red;">
-                    {{ error }}
-                </span>
-            {% endfor %}
-            {% for error in form.password.errors %}
-                <span style="color:red;">
-                    {{ error }}
-                </span>
-            {% endfor %}
+            <p>
+                {% with messages = get_flashed_messages(category_filter=['invalid_username_or_password']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <span style="color: red;">
+                                {{ message }}
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <span style="color: red;">
+                                {{ message }}
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </p>
         </div>
         <div class="logo-top">
             <img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Image of a Python" class="login-logos">
@@ -30,7 +40,7 @@
             <legend class="login-legend">
                 Welcome, friends!
             </legend>
-            <form action="" method="post" novalidate>
+            <form action="" method="post">
                 {{ form.hidden_tag() }}
                 <div class="login-username-label-and-field">
                     <label for="username" class="login-username-label">Username</label>
