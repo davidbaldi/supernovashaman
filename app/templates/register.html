@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- <link rel="stylesheet" href="/app/static/css/styles.css"> -->
+    <!-- <link rel="stylesheet" href="\\wsl.localhost\Ubuntu-20.04\home\supernovashaman\app\static\css\styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
 </head>
-    <body>
-        <h1>Register</h1>
-        <form action="" method="post">
-            {{ form.hidden_tag() }}
-            <p>
-                {{ form.username.label }}<br>
-                {{ form.username(size=32) }}
-                {% for error in form.username.errors %}
-                    <span style="color: red;">
-                        [{{ error }}]
-                    </span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.email.label }}<br>
-                {{ form.email(size=64) }}<br>
-                {% for error in form.email.errors %}
+<body>
+    <div class="registration-main-container">
+        <div class="registration-notifications">
+            {% for error in form.username.errors %}
                 <span style="color: red;">
-                    [{{ error }}]
+                    {{ error }}
                 </span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.password.label }}<br>
-                {{ form.password(size=32) }}<br>
-                {% for error in form.password.errors %}
-                    <span style="color: red;">
-                        [{{ error }}]
-                    </span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.password2.label }}<br>
-                {{ form.password2(size=32) }}<br>
-                {% for error in form.password2.errors %}
-                    <span style="color: red;">
-                        [{{ error }}]
-                    </span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.submit() }}
-            </p>
-            <!-- Need invitation code field -->
-        </form>
-    </body>
+            {% endfor %}
+            {% for error in form.password.errors %}
+                <span style="color: red;">
+                    {{ error }}
+                </span>
+            {% endfor %}
+            {% for error in form.password2.errors %}
+                <span style="color: red;">
+                    {{ error }}
+                </span>
+            {% endfor %}
+        </div>
+        <fieldset class="registration-fieldset">
+            <legend class="registration-legend">
+                Sign up
+            </legend>
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="registration-username-label-and-field">
+                    <label for="registration-username-label" class="registration-username-label">Username</label>
+                    <!-- <input type="text" id="registration-username-label" class="registration-username-field"> -->
+                    {{ form.username(id='registration-username-label', class_='registration-username-field') }}
+                </div>
+                <div class="registration-password-label-and-field">
+                    <label for="registration-password-field" class="registration-password-label">Password</label>
+                    <!-- <input type="password" id="registration-password-field" class="registration-password-field"> -->
+                    {{ form.password(id='registration-password-field', class_='registration-password-field') }}
+                </div>
+                <div class="registration-confirm-password-label-and-field">
+                    <label for="registration-confirm-password-field" class="registration-confirm-password-label">Confirm password</label>
+                    <!-- <input type="password" id="registration-confirm-password-field" class="registration-confirm-password-field"> -->
+                    {{ form.password2(id='registration-confirm-password-field', class_='registration-confirm-password-field') }}
+                </div>
+                <div class="registration-submit-button-div">
+                    <!-- <button type="submit" class="registration-submit-button-itself">Sign me up!</button> -->
+                    {{ form.submit(class_='registration-submit-button-itself') }}
+                </div>
+            </form>
+        </fieldset>
+        <div class="below-registration-form-info">
+            <div>
+                <a href="#">What is this place?</a>
+            </div>
+            <br>
+            <div>
+                Or, <a href="/login">log in</a>.
+            </div>
+        </div>
+    </div>
+</body>
 </html>

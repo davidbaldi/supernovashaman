@@ -37,7 +37,7 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField(
         'Confirm password', validators=[DataRequired(), EqualTo('password')]
         )
-    submit = SubmitField('Register')
+    submit = SubmitField('Sign me up!')
 
 
     def does_email_exist(self, new_user_dict):
