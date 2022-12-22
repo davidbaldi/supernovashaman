@@ -89,7 +89,7 @@ address { font-style:normal }
         "logo banner blank"
         "menu-left . menu-right";
     justify-items: stretch;
-    /* background-color: antiquewhite; */
+    background-color: white;
 }
 
 .logo {
@@ -116,6 +116,10 @@ address { font-style:normal }
     /* background-color: violet; */
 }
 
+.menu-anchor {
+    margin: 1%;
+}
+
 .menu-left {
     grid-area: menu-left;
     display: flex;
@@ -140,6 +144,36 @@ address { font-style:normal }
     width: 50vw;
     justify-self: end;
     /* background-color: springgreen; */
+}
+
+.menu-div {
+    display: flex;
+    margin: 1%;
+    border: 2pt solid black;
+    border-radius: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.menu-about {
+    margin-left: 15%;
+}
+
+.menu-div:hover {
+    background-color: darkgray;
+}
+
+.menu-div:active {
+    background-color: white;
+}
+
+.menu-traders-tent {
+    color: red;
 }
 
 .notifications {
@@ -581,4 +615,96 @@ address { font-style:normal }
     grid-area: registration-notifications;
     justify-self: center;
     align-self: end;
+}
+
+.registration-logo-top {
+    grid-area: registration-logo-top;
+}
+
+.registration-logo-bottom {
+    grid-area: registration-logo-bottom;
+}
+
+
+/* Card Components */
+
+
+.card-whole-div {
+    margin: 1in;
+    width: 3in;
+    height: 4.2in;
+    background-color: antiquewhite;
+}
+
+.card-itself {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.card-img-resizing {
+    border: 1pt solid black;
+    border-radius: 7.5px;
+    width: 3.125in;
+    height: 4.375in;
+    /* background-color: aquamarine; */
+}
+
+.card-bottom-info {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: inherit;
+    height: max-content;
+    /* background-color: beige; */
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-column-gap: 5px;
+    grid-template-areas:
+        "card-name card-like-button card-add-to-cart-button"
+        "card-version card-like-button card-add-to-cart-button"
+        "card-status card-like-button card-add-to-cart-button";
+}
+
+.card-bottom-info-entry {
+    width: max-content;
+    height: max-content;
+    /* background-color: bisque; */
+}
+
+.card-bottom-info-name {
+    grid-area: card-name;
+}
+
+.card-bottom-info-version {
+    grid-area: card-version;
+}
+
+.card-bottom-info-status {
+    grid-area: card-status;
+}
+
+.card-like-button,
+.card-add-to-cart-button {
+    /* outline: 1pt solid red; */
+    max-width: 1.5cm;
+    max-height: 1.5cm;
+}
+
+.card-like-button {
+    grid-area: card-like-button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-add-to-cart-button {
+    grid-area: card-add-to-cart-button;
+}
+
+.card-img-like-button,
+.card-img-add-to-cart-button {
+    width: 1.5cm;
 }
