@@ -1,11 +1,11 @@
 <div class="card-whole-div">
     <div class="card-itself">
-        <img src="\app\static\rae.png" alt="Image of Rae" class="card-img-resizing">
+        <img src="/static/{{ card.filename }}" alt="Image of {{ card.card_name }}" class="card-img-resizing">
         <!-- <img src="\\wsl.localhost\Ubuntu-20.04\home\supernovashaman\app\static\rae.png" alt="Image of Rae" class="card-img-resizing"> -->
     </div>
     <div class="card-bottom-info">
         <div class="card-bottom-info-name card-bottom-info-entry">
-            <i>Card Name Goes Here!</i>
+            <i><b>{{ card.card_name }}</b></i>
         </div>
         <div class="card-bottom-info-version card-bottom-info-entry">
             <i>version</i> <b>Collectable</b>
@@ -14,10 +14,10 @@
             <i>status</i> <b>Private Collection</b>
         </div>
         <div class="card-like-button">
-            <img src="\app\static\img-like.png" alt="'Like' button" class="card-img-like-button">
+            <img src="/static/img-like.png" alt="'Like' button" class="card-img-like-button">
         </div>
         <div class="card-add-to-cart-button">
-            <img src="\app\static\img-cart.png" alt="'Add to Cart' button'" class="card-img-add-to-cart-button">
+            <img src="/static/img-cart.png" alt="'Add to Cart' button" class="card-img-add-to-cart-button">
         </div>
     </div>
 </div>

@@ -143,7 +143,6 @@ address { font-style:normal }
     border-bottom: 2pt solid black;
     width: 50vw;
     justify-self: end;
-    /* background-color: springgreen; */
 }
 
 .menu-div {
@@ -182,11 +181,9 @@ address { font-style:normal }
     padding-right: 1%;
     border-left: 2pt solid black;
     border-right: 2pt solid black;
-    /* border-bottom: 2pt solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: cadetblue; */
 }
 
 .card-switches {
@@ -198,7 +195,6 @@ address { font-style:normal }
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: blue; */
 }
 
 .page-info {
@@ -207,17 +203,17 @@ address { font-style:normal }
     border-left: 2pt solid black;
     border-right: 2pt solid black;
     border-bottom: 2pt solid black;
-    /* background-color: blueviolet; */
 }
 
 .all-cards {
     grid-area: all-cards;
-    padding: 2.5%;
+    padding: 2%;
     border-right: 2pt solid black;
     border-left: 2pt solid black;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     overflow-y: scroll;
-    /* background-color: aquamarine; */
 }
 
 /* Hide scrollbar Chrome, Safari, Opera */
@@ -630,10 +626,10 @@ address { font-style:normal }
 
 
 .card-whole-div {
-    margin: 1in;
+    margin: 5%;
     width: 3in;
     height: 4.2in;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
 }
 
 .card-itself {
@@ -702,9 +698,12 @@ address { font-style:normal }
 
 .card-add-to-cart-button {
     grid-area: card-add-to-cart-button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-img-like-button,
 .card-img-add-to-cart-button {
-    width: 1.5cm;
+    width: 1cm;
 }

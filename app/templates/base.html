@@ -42,23 +42,28 @@
                     </a>
                 </div>
                 <div class="menu-right">
-                    {% if current_user.is_anonymous %}
-                        <a href="{{ url_for('login') }}">Log in</a>
-                    {% else %}
+                    <!-- {% if current_user.is_anonymous %} -->
+                        <!-- <a href="{{ url_for('login') }}">Log in</a> -->
+                    <!-- {% else %} -->
+                        <input type="text" placeholder="Search my site!">
+                        &nbsp;
+                        <a href="#">Cart</a>
+                        &nbsp;
                         <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+                        &nbsp;
                         <a href="{{ url_for('logout') }}">Log out</a>
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </div>
             </div>
             {% block content %}
 
             {% endblock content %}
-            <div class="email-blurb">
+            <!-- <div class="email-blurb">
                 ...
             </div>
             <div class="miscellaneous-blurb">
                 ...
-            </div>
+            </div> -->
         </div>
     </body>
 </html>
