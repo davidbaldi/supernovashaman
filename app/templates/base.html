@@ -42,17 +42,22 @@
                     </a>
                 </div>
                 <div class="menu-right">
-                    <!-- {% if current_user.is_anonymous %} -->
-                        <!-- <a href="{{ url_for('login') }}">Log in</a> -->
-                    <!-- {% else %} -->
-                        <input type="text" placeholder="Search my site!">
-                        &nbsp;
-                        <a href="#">Cart</a>
-                        &nbsp;
-                        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-                        &nbsp;
-                        <a href="{{ url_for('logout') }}">Log out</a>
-                    <!-- {% endif %} -->
+                    <input type="text" placeholder="Search my site (coming soon!)" class="search-bar">
+                    <a href="#" class="menu-cart">
+                        <button type="button" action="#" class="menu-right-div menu-cart">
+                            Cart
+                        </button>
+                    </a>
+                    <a href="{{ url_for('user', username=current_user.username) }}" class="menu-profile">
+                        <button type="button" action="#" class="menu-right-div menu-profile">
+                            Profile
+                        </button>
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="menu-log-out">
+                        <button type="button" action="#" class="menu-right-div menu-log-out">
+                            Log out
+                        </button>
+                    </a>
                 </div>
             </div>
             {% block content %}

@@ -167,8 +167,30 @@ address { font-style:normal }
     background-color: darkgray;
 }
 
+.menu-right-div:hover {
+    background-color: darkgray;
+}
+
 .menu-div:active {
     background-color: white;
+}
+
+.menu-div:active {
+    background-color: white;
+}
+
+.menu-right-div {
+    display: flex;
+    margin: 1%;
+    border: 2pt solid black;
+    border-radius: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
 }
 
 .menu-traders-tent {
@@ -619,6 +641,28 @@ address { font-style:normal }
 
 .registration-logo-bottom {
     grid-area: registration-logo-bottom;
+}
+
+.search-bar {
+    margin-right: 2%;
+    border: 2pt solid black;
+    border-radius: 50px;
+    padding-left: 2%;
+    width: 3in;
+    height: 30px;
+    font-size: large;
+}
+
+.menu-cart {
+    margin-right: 2%;
+}
+
+.menu-profile {
+    margin-right: 2%;
+}
+
+.menu-log-out {
+    margin-right: 2%;
 }
 
 
