@@ -15,7 +15,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 
-# I understand very little of this code right here...
+# Still trying to understand this code right here...
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None

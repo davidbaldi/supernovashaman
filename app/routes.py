@@ -213,7 +213,29 @@ def admin_edit_one_card(card_name):
             card=card
             )
 
+
 @app.route('/cards')
 def view_cards():
     cards = Card.get_all_cards()
+    Card.get_liked_cards(current_user.__dict__)
     return render_template('view_cards.html', cards=cards)
+
+
+@app.route('/cards/<int:card_id>/like')
+def like_card(card_id):
+    user_and_favorite_dict = {
+        'user_id': current_user.id,
+        'card_id': card_id
+        }
+    Card.like_card(user_and_favorite_dict)
+    return redirect(url_for('view_cards'))
+
+
+@app.route('/cards/<int:card_id>/unlike')
+def unlike_card(card_id):
+    favorite_dict = {
+        'user_id': current_user.id,
+        'card_id': card_id
+        }
+    Card.unlike_card(favorite_dict=favorite_dict)
+    return redirect(url_for('view_cards'))

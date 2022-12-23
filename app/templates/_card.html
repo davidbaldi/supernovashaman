@@ -14,7 +14,15 @@
             <i>status</i> <b>Private Collection</b>
         </div>
         <div class="card-like-button">
-            <img src="/static/img-like.png" alt="'Like' button" class="card-img-like-button">
+            {% if card.id not in current_user.favorite_cards %}
+                <a href="/cards/{{ card.id }}/like">
+                    <img src="/static/img-unliked.png" alt="'Unliked' symbol" class="card-img-like-button">
+                </a>
+            {% elif card.id in current_user.favorite_cards %}
+                <a href="/cards/{{ card.id }}/unlike">
+                    <img src="/static/img-liked.png" alt="'Liked' symbol" class="card-img-like-button">
+                </a>
+            {% endif %}
         </div>
         <div class="card-add-to-cart-button">
             <img src="/static/img-cart.png" alt="'Add to Cart' button" class="card-img-add-to-cart-button">

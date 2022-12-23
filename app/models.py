@@ -1,4 +1,5 @@
 from app import login
+from flask_login import current_user
 from flask_login import UserMixin
 from flask import session
 from hashlib import md5
@@ -226,9 +227,35 @@ class Card:
         return connectToMySQL(db).query_db(query, card_name_dict)
 
 
-    def like_card():
-        pass
+    @classmethod
+    def like_card(cls, favorite_dict):
+        query = """
+                INSERT INTO favorite (user_id, card_id)
+                VALUES (%(user_id)s, %(card_id)s);
+                """
+        return connectToMySQL(db).query_db(query, favorite_dict)
 
 
-    def unlike_card():
-        pass
+    @classmethod
+    def unlike_card(cls, favorite_dict):
+        query = """
+                DELETE FROM favorite
+                WHERE user_id = %(user_id)s AND card_id = %(card_id)s;
+                """
+        return connectToMySQL(db).query_db(query, favorite_dict)
+
+
+    @classmethod
+    def get_liked_cards(cls, user_dict):
+        query = """
+                SELECT * FROM cards
+                LEFT JOIN favorite ON favorite.card_id = cards.id
+                LEFT JOIN users ON favorite.user_id = users.id
+                WHERE favorite.user_id = %(id)s;
+                """
+        rows_of_cards = connectToMySQL(db).query_db(query, user_dict)
+        # if rows_of_cards:
+        for favorite_card in rows_of_cards:
+            card = Card(favorite_card)
+            current_user.favorite_cards.append(card.id)
+        return

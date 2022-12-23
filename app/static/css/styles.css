@@ -7,18 +7,29 @@ ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fields
 a img, :link img, :visited img { border:none }
 address { font-style:normal }
 
+
 /* Corey's reset */
 * { box-sizing: border-box }
 
+
 /* End resets */
+
+
 /* Begin David Baldi's CSS */
 /* Main components (base.html template, etc.) */
+
+
+body {
+    background-image: url("/static/ssbkgd.jpg");
+}
 
 * {
     font-family: Calibri; 
 }
 
+
 /* Uncategorized section */
+
 
 .all_cards_table,
 .all_cards_thead,
@@ -37,7 +48,9 @@ address { font-style:normal }
     color: red;
 }
 
+
 /* Admin Dashboard */
+
 
 .admin-main-page {
     grid-area: all-cards;
@@ -126,7 +139,7 @@ address { font-style:normal }
     justify-content: start;
     align-items: center;
     padding: 5%;
-    border-top: 2pt solid black;
+    /* border-top: 2pt solid black; */
     border-bottom: 2pt solid black;
     width: 50vw;
     justify-self: start;
@@ -139,7 +152,7 @@ address { font-style:normal }
     justify-content: end;
     align-items: center;
     padding: 5%;
-    border-top: 2pt solid black;
+    /* border-top: 2pt solid black; */
     border-bottom: 2pt solid black;
     width: 50vw;
     justify-self: end;
@@ -150,8 +163,8 @@ address { font-style:normal }
     margin: 1%;
     border: 2pt solid black;
     border-radius: 5px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     width: max-content;
     height: max-content;
     justify-content: center;
@@ -184,8 +197,8 @@ address { font-style:normal }
     margin: 1%;
     border: 2pt solid black;
     border-radius: 5px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     width: max-content;
     height: max-content;
     justify-content: center;
@@ -201,8 +214,6 @@ address { font-style:normal }
     grid-area: notifications;
     padding-left: 1%;
     padding-right: 1%;
-    border-left: 2pt solid black;
-    border-right: 2pt solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -225,6 +236,7 @@ address { font-style:normal }
     border-left: 2pt solid black;
     border-right: 2pt solid black;
     border-bottom: 2pt solid black;
+    background-color: white;
 }
 
 .all-cards {
@@ -236,6 +248,7 @@ address { font-style:normal }
     justify-content: space-between;
     flex-wrap: wrap;
     overflow-y: scroll;
+    background-color: white;
 }
 
 /* Hide scrollbar Chrome, Safari, Opera */
@@ -670,9 +683,11 @@ address { font-style:normal }
 
 
 .card-whole-div {
+    background-color: white;
     margin: 5%;
     width: 3in;
     height: 4.2in;
+    z-index: 1;
     /* background-color: antiquewhite; */
 }
 
