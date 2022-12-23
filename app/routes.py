@@ -116,7 +116,7 @@ def edit_profile():
         current_user.gift_bday = form.gift_bday.data
         current_user.gift_xmas = form.gift_xmas.data
         current_user.update_profile(current_user.__dict__)
-        flash('Your changes have been saved.')
+        flash('Your changes have been saved.', 'profile_updated')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username

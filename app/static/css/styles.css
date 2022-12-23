@@ -342,6 +342,7 @@ body {
 
 .profile-contents {
     grid-area: all-cards;
+    justify-self: center;
 }
 
 .user-profile-pic {
@@ -349,13 +350,27 @@ body {
     border-radius: 10px;
 }
 
+
 /* 'Edit Profile' Main Components */
 
-.edit-profile-contents {
+
+.edit-profile-main-div {
     grid-area: all-cards;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
 }
 
-/*  */
+.edit-profile-contents {
+    justify-self: center;
+}
+
+.edit-profile-notification {
+    grid-area: all-cards;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+}
 
 .homepage {
     grid-area: all-cards;
