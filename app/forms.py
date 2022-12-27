@@ -5,6 +5,7 @@ from flask import flash
 from mysqlconnection import connectToMySQL
 from wtforms import BooleanField
 from wtforms import DateField
+from wtforms import DecimalField
 from wtforms import IntegerField
 from wtforms import PasswordField
 from wtforms import SelectField
@@ -99,10 +100,29 @@ class AddNewCardForm(FlaskForm):
         DataRequired()])
     status = SelectField('Status', validators=[
         DataRequired()],
-        choices=['in stock', 'Limited edition!', 'Private collection'])
+        choices=[
+            'In stock',
+            'Out of stock',
+            'On Sale!',
+            'Limited Edition',
+            'Gone Forever!',
+            'Promo',
+            'Private collection'
+            ])
     quantity = IntegerField('Quantity', validators=[
         InputRequired(),
         NumberRange(min=0)])
+    price = DecimalField('Price', validators=[
+        InputRequired(),
+        NumberRange(min=0)])
+    genus = StringField('Genus')
+    order = StringField('Order')
+    playable_or_collectable = SelectField('Issue', validators=[
+        DataRequired()],
+        choices=[
+            'Collectable',
+            'Playable'
+            ])
     filename = StringField('Filename', validators=[
         DataRequired(),
         Length(min=0, max=127)])
