@@ -90,12 +90,26 @@ class EditProfileForm(FlaskForm):
 class AddNewCardForm(FlaskForm):
     card_name = StringField('Name', validators=[
         DataRequired()])
+    card_genus = StringField('Card Genus')
+    card_order = StringField('Card Order')
     description = TextAreaField('Description', validators=[
         DataRequired(),
         Length(min=0, max=1023)])
-    type = SelectField('Type', validators=[
+    filename = StringField('Filename', validators=[
+        DataRequired(),
+        Length(min=0, max=127)])
+    card_issue = SelectField('Card Issue', validators=[
         DataRequired()],
-        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
+        choices=[
+            'collectable',
+            'playable'
+            ])
+    price = DecimalField('Price', validators=[
+        InputRequired(),
+        NumberRange(min=0)])
+    quantity = IntegerField('Quantity', validators=[
+        InputRequired(),
+        NumberRange(min=0)])
     released_on = DateField('Release Date', validators=[
         DataRequired()])
     status = SelectField('Status', validators=[
@@ -109,24 +123,10 @@ class AddNewCardForm(FlaskForm):
             'Promo',
             'Private collection'
             ])
-    quantity = IntegerField('Quantity', validators=[
-        InputRequired(),
-        NumberRange(min=0)])
-    price = DecimalField('Price', validators=[
-        InputRequired(),
-        NumberRange(min=0)])
-    genus = StringField('Genus')
-    order = StringField('Order')
-    playable_or_collectable = SelectField('Issue', validators=[
-        DataRequired()],
-        choices=[
-            'Collectable',
-            'Playable'
-            ])
-    filename = StringField('Filename', validators=[
-        DataRequired(),
-        Length(min=0, max=127)])
     submit = SubmitField('Add card')
+    type = SelectField('Type', validators=[
+        DataRequired()],
+        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
 
 
     def validate_card_name(self, card_edits_dict):

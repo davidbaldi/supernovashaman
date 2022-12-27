@@ -135,6 +135,10 @@ class Card:
         self.released_on = db_card['released_on']
         self.status = db_card['status']
         self.quantity = db_card['quantity']
+        self.price = db_card['price']
+        self.genus = db_card['genus']
+        self.order = db_card['order']
+        self.card_issue = db_card['card_issue']
         self.filename = db_card['filename']
 
 
@@ -148,7 +152,11 @@ class Card:
                     released_on,
                     status,
                     quantity,
-                    filename
+                    filename,
+                    price,
+                    card_genus,
+                    card_order,
+                    card_issue
                     )
                 VALUES (
                     %(card_name)s,
@@ -157,7 +165,11 @@ class Card:
                     NOW(),
                     %(status)s,
                     %(quantity)s,
-                    %(filename)s
+                    %(filename)s,
+                    %(price)s,
+                    %(card_genus)s,
+                    %(card_order)s,
+                    %(card_issue)s
                     );
                 """
         return connectToMySQL(db).query_db(query, new_card_dict)
